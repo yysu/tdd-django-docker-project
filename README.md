@@ -2,7 +2,7 @@
 
 
 ## Tech stack
-- Python/Django/Django REST Framework
+- Python 3.10/Django 4.1.2/Django REST Framework 3.14.0
 - pytest
 - Docker
 - GitLab CI
@@ -15,8 +15,8 @@
 | Endpoint | HTTP Method | CRUD Method | Result |
 | -------- | -------- | -------- | -------- |
 | /api/movies | GET | READ | get all movies |
-|/api/movies/:id | GET | READ | get a single movie |
-|/api/movies | POST | CREATE | add a movie |
-|/api/movies/:id | PUT | UPDATE | update a movie |
-|/api/movies/:id | DELETE | DELETE | delete a movie |
+| /api/movies/:id | GET | READ | get a single movie |
+| /api/movies | POST | CREATE | add a movie |
+| /api/movies/:id | PUT | UPDATE | update a movie |
+| /api/movies/:id | DELETE | DELETE | delete a movie |
 

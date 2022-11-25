@@ -20,3 +20,31 @@
 | /api/movies/:id | PUT | UPDATE | update a movie |
 | /api/movies/:id | DELETE | DELETE | delete a movie |
 
+## Folder structure
+`git ls-tree -r --name-only HEAD | tree --fromfile`
+.
+├── .gitignore
+├── README.md
+├── app
+│   ├── Dockerfile
+│   ├── docker-compose.yml
+│   ├── drf_project
+│   │   ├── __init__.py
+│   │   ├── asgi.py
+│   │   ├── manage.py
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   └── wsgi.py
+│   ├── manage.py
+│   ├── movies
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── tests.py
+│   │   └── views.py
+│   └── requirements.txt
+└── docker-compose.yml

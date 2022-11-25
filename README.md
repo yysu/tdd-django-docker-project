@@ -52,3 +52,7 @@
 │   └── requirements.txt
 └── docker-compose.yml
 ```
+
+
+## Note
+If you use m1/m2 chip macbook, remember to `export DOCKER_DEFAULT_PLATFORM=linux/amd64` before building/running the image.

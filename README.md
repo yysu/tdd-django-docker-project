@@ -2,7 +2,9 @@
 
 
 ## Tech stack
-- Python 3.10/Django 4.1.2/Django REST Framework 3.14.0
+- Python 3.10
+- Django 4.1.2
+- Django REST Framework 3.14.0
 - pytest
 - Docker
 - GitLab CI

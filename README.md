@@ -24,6 +24,7 @@
 
 ## Folder structure
 `git ls-tree -r --name-only HEAD | tree --fromfile`
+```
 .
 ├── .gitignore
 ├── README.md
@@ -50,3 +51,4 @@
 │   │   └── views.py
 │   └── requirements.txt
 └── docker-compose.yml
+```

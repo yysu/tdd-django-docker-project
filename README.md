@@ -9,7 +9,7 @@
 - Docker
 - GitLab CI
 - RESTful API
-- Heroku
+- [render](https://render.com/docs/deploy-django#update-your-app-for-render)
 
 
 ## API Overview

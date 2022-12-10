@@ -1,5 +1,6 @@
 from movies.serializers import MovieSerializer
 
+
 def test_valid_movie_serializer():
     valid_serializer_data = {
         "title": "Raising Arizona",
@@ -11,6 +12,7 @@ def test_valid_movie_serializer():
     assert serializer.validated_data == valid_serializer_data
     assert serializer.data == valid_serializer_data
     assert serializer.errors == {}
+
 
 def test_invalid_movie_serializer():
     invalid_serializer_data = {

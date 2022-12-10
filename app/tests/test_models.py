@@ -13,4 +13,3 @@ def test_movie_model():
     assert movie.created_date
     assert movie.updated_date
     assert str(movie) == movie.title
-

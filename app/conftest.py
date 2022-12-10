@@ -1,7 +1,6 @@
-import os
-import pytest
+# import pytest
 
-from django.conf import settings
+# from django.conf import settings
 
 
 DEFAULT_ENGINE = "django.db.backends.postgresql_psycopg2"

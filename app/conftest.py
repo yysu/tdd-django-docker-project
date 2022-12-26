@@ -3,7 +3,7 @@
 # from django.conf import settings
 
 
-DEFAULT_ENGINE = "django.db.backends.postgresql_psycopg2"
+# DEFAULT_ENGINE = "django.db.backends.postgresql_psycopg2"
 
 
 # @pytest.fixture(scope="session")

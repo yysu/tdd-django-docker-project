@@ -56,3 +56,40 @@
 
 ## Note
 If you use m1/m2 chip macbook, remember to `export DOCKER_DEFAULT_PLATFORM=linux/amd64` before building/running the image.
+
+
+## Some useful command
+```
+# Start app
+$ docker-compose up -d --build
+
+# Run the tests with coverage
+$ docker-compose exec movies pytest -p no:warnings --cov=.
+
+# Want to view an HTML version
+$ docker-compose exec movies pytest -p no:warnings --cov=. --cov-report html
+
+# Run Flake8
+$ docker-compose exec movies flake8 .
+
+# run Black
+$ docker-compose exec movies black --check --exclude=migrations .
+
+# Try running it with the diff option as well before applying the changes
+$ docker-compose exec movies black --diff --exclude=migrations .
+$ docker-compose exec movies black --exclude=migrations .
+
+
+# Run it with the check-only and diff options
+$ docker-compose exec movies isort . --check-only
+$ docker-compose exec movies isort . --diff
+
+# apply the changes
+$ docker-compose exec movies isort .
+
+
+# Verify one last time that Flake8, Black, and isort all pass:
+$ docker-compose exec movies flake8 .
+$ docker-compose exec movies black --check --exclude=migrations .
+$ docker-compose exec movies isort . --check-only
+```

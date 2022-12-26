@@ -27,17 +27,21 @@
 ```
 .
 ├── .gitignore
+├── .gitlab-ci.yml
 ├── README.md
 ├── app
 │   ├── Dockerfile
-│   ├── docker-compose.yml
+│   ├── Dockerfile.prod
+│   ├── conftest.py
 │   ├── drf_project
 │   │   ├── __init__.py
 │   │   ├── asgi.py
 │   │   ├── manage.py
 │   │   ├── settings.py
 │   │   ├── urls.py
+│   │   ├── views.py
 │   │   └── wsgi.py
+│   ├── entrypoint.sh
 │   ├── manage.py
 │   ├── movies
 │   │   ├── __init__.py
@@ -45,12 +49,28 @@
 │   │   ├── apps.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_movie.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
-│   │   ├── tests.py
+│   │   ├── serializers.py
+│   │   ├── urls.py
 │   │   └── views.py
-│   └── requirements.txt
+│   ├── movies.json
+│   ├── pytest.ini
+│   ├── requirements.txt
+│   ├── setup.cfg
+│   └── tests
+│       ├── __init__.py
+│       ├── movies
+│       │   ├── __init__.py
+│       │   ├── conftest.py
+│       │   └── test_views.py
+│       ├── test_foo.py
+│       ├── test_models.py
+│       └── test_serializers.py
 └── docker-compose.yml
+
+6 directories, 37 files
 ```
 
 

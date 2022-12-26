@@ -1,9 +1,5 @@
 image: docker:stable
 
-job_name:
-  variables:
-    CI_DEBUG_TRACE: "true"
-
 stages:
   - build
   - test

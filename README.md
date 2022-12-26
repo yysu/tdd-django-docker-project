@@ -1,8 +1,5 @@
 # Test-Driven Development with Django, Django REST Framework, and Docker
 
-[![pipeline status](https://gitlab.com/yysu/TDD-django-docker-project/badges/master/pipeline.svg)](https://gitlab.com/yysu/TDD-django-docker-project/commits/master)
-
-
 ## Tech stack
 - Python 3.10
 - Django 4.1.2

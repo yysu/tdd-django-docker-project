@@ -3,6 +3,7 @@ image: docker:stable
 stages:
   - build
   - test
+  - deploy
 
 variables:
   IMAGE: ${CI_REGISTRY}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}
@@ -17,10 +18,13 @@ build:
     - cd app
     - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
     - docker pull $IMAGE:latest || true
+    - echo $SECRET_KEY
     - docker build
         --cache-from $IMAGE:latest
+        --cache-from $IMAGE:builder
         --tag $IMAGE:latest
         --file ./Dockerfile.prod
+        --build-arg SECRET_KEY=$SECRET_KEY
         "."
     - docker push $IMAGE:latest
 
@@ -36,7 +40,14 @@ test:
     DATABASE_TEST_URL: postgresql://runner:runner@postgres:5432/users
   script:
     - cd app
-    - pytest -p no:warnings --cov=.
+    - python3.10 -m venv env
+    - source env/bin/activate
+    - pip install -r requirements.txt
+    - pip install black==22.10.0 flake8==5.0.4 isort==5.10.1 pytest==7.2.0 pytest-django==4.5.2
+    - export DEBUG=1
+    - pytest -p no:warnings
     - flake8 .
-    - black --check --exclude=migrations .
-    - isort . --check-only
+    - black . --check --exclude="migrations|env"
+    - isort . --check-only --skip env
+    - export DEBUG=0
+    - python manage.py check --deploy --fail-level=WARNING

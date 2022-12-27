@@ -72,6 +72,7 @@ def test_get_all_movies(client, add_movie):
     assert resp.data[0]["title"] == movie_one.title
     assert resp.data[1]["title"] == movie_two.title
 
+
 @pytest.mark.django_db
 def test_remove_movie(client, add_movie):
     movie = add_movie(title="The Big Lebowski", genre="comedy", year="1998")
@@ -93,6 +94,7 @@ def test_remove_movie_incorrect_id(client):
     resp = client.delete(f"/api/movies/99/")
     assert resp.status_code == 404
 
+
 @pytest.mark.django_db
 def test_update_movie(client, add_movie):
     movie = add_movie(title="The Big Lebowski", genre="comedy", year="1998")
@@ -100,7 +102,7 @@ def test_update_movie(client, add_movie):
     resp = client.put(
         f"/api/movies/{movie.id}/",
         {"title": "The Big Lebowski", "genre": "comedy", "year": "1997"},
-        content_type="application/json"
+        content_type="application/json",
     )
     assert resp.status_code == 200
     assert resp.data["title"] == "The Big Lebowski"
@@ -119,19 +121,19 @@ def test_update_movie_incorrect_id(client):
 
 
 @pytest.mark.django_db
-def test_update_movie_invalid_json(client, add_movie):
+@pytest.mark.parametrize(
+    "add_movie, payload, status_code",
+    [
+        ["add_movie", {}, 400],
+        ["add_movie", {"title": "The Big Lebowski", "genre": "comedy"}, 400],
+    ],
+    indirect=["add_movie"],
+)
+def test_update_movie_invalid_json(client, add_movie, payload, status_code):
     movie = add_movie(title="The Big Lebowski", genre="comedy", year="1998")
-    resp = client.put(f"/api/movies/{movie.id}/", {}, content_type="application/json")
-    assert resp.status_code == 400
-
-
-@pytest.mark.django_db
-def test_update_movie_invalid_json_keys(client, add_movie):
-    movie = add_movie(title="The Big Lebowski", genre="comedy", year="1998")
-
     resp = client.put(
         f"/api/movies/{movie.id}/",
-        {"title": "The Big Lebowski", "genre": "comedy"},
+        payload,
         content_type="application/json",
     )
-    assert resp.status_code == 400
+    assert resp.status_code == status_code

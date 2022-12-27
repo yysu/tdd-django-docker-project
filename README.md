@@ -92,7 +92,7 @@ $ docker-compose exec movies pytest -p no:warnings --cov=. --cov-report html
 $ docker-compose exec movies flake8 .
 
 # run Black
-$ docker-compose exec movies black --check --exclude=migrations .
+$ docker-compose exec movies black --check --exclude=migrations --exclude=env .
 
 # Try running it with the diff option as well before applying the changes
 $ docker-compose exec movies black --diff --exclude=migrations .
@@ -108,7 +108,8 @@ $ docker-compose exec movies isort .
 
 
 # Verify one last time that Flake8, Black, and isort all pass:
+$ docker-compose exec movies pytest -p no:warnings --cov=.
 $ docker-compose exec movies flake8 .
-$ docker-compose exec movies black --check --exclude=migrations .
+$ docker-compose exec movies black --check --exclude=migrations --exclude=env .
 $ docker-compose exec movies isort . --check-only
 ```
